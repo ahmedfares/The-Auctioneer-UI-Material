@@ -3,17 +3,21 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "moshop": {
+    "the-actionner-UI": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/moshop",
+            "outputPath": "dist/the-actionner-UI",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,8 +29,10 @@
             "styles": [
               "src/styles.scss",
               "./node_modules/font-awesome/css/font-awesome.css"
+              // "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
@@ -44,25 +50,32 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "moshop:build"
+            "browserTarget": "the-actionner-UI:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "moshop:build:production"
+              "browserTarget": "the-actionner-UI:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "moshop:build"
+            "browserTarget": "the-actionner-UI:build"
           }
         },
         "test": {
@@ -73,11 +86,9 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css",
-              "../node_modules/bootstrap/dist/css/bootstrap.css",
-              "../node_modules/font-awesome/css/font-awesome.css"
+              "src/styles.scss"
             ],
-            "scripts": ["../node_modules/jquery/dist/jquery.min.js"],
+            "scripts": [],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -98,19 +109,20 @@
         }
       }
     },
-    "moshop-e2e": {
+    "the-actionner-UI-e2e": {
       "root": "e2e/",
       "projectType": "application",
+      "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "moshop:serve"
+            "devServerTarget": "the-actionner-UI:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "moshop:serve:production"
+              "devServerTarget": "the-actionner-UI:serve:production"
             }
           }
         },
@@ -126,5 +138,5 @@
       }
     }
   },
-  "defaultProject": "moshop"
+  "defaultProject": "the-actionner-UI"
 }

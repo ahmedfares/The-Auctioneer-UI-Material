@@ -1,3 +1,103 @@
-<p>
-  home works!
-</p>
+<app-header></app-header>
+
+<div class="row" style="padding-top: 40px;">
+  <div class="col-lg-12" >
+    <img src="assets/images/banner5.png" width="100%" height="260" >
+  </div>
+  </div>
+  <div class="container">
+  <div class="row " style="margin-bottom: 20px;margin-top: 20px">
+      <div class="col-lg-2" style="padding: 0;margin:0;margin-left:100px">
+          <div class="categoryLabel">Category</div>
+              <select (change)="filterByCat( 'category',$event)" class="form-control">
+                <option *ngFor="let color of Categories" [value]="color">{{color}}</option>
+              </select>
+            </div>
+    
+          <div class="col-lg-2">
+            <div class="categoryLabel">Location</div>
+              <select  (change)="filterByCat('city',$event)" class="form-control">
+                                 <option *ngFor="let color of Cities" [value]="color.id">{{color.Name}}</option>
+              </select>
+                </div>
+                <div class="col-lg-2">
+            <div class="categoryLabel">Price</div>
+            <select  (change)="filterByCat('price',$event)" class="form-control">
+                        <option *ngFor="let color of Prices" [value]="color.id">{{color.Name}}</option>
+                      </select>
+                      </div>
+                      <div class="col-lg-2">
+            <div class="categoryLabel">Relatives</div>
+            <select (change)="filterByCat('arrange',$event)" class="form-control">
+                              <option *ngFor="let color of Relatives" [value]="color.id">{{color.Name}}</option>
+                            </select>
+                            </div>
+                            <div class="col-lg-2" style="padding: 0;margin:0">
+            <div class="categoryLabel">Posted Within</div>
+            <select class="form-control">
+                                    <option *ngFor="let color of Within" [value]="color.id">{{color.Name}}</option>
+                                  </select>
+                                  </div>
+    </div>
+  
+  <div class="row">
+    <!-- <div class="col-3">
+      <product-filter [category]="category"></product-filter>
+    </div> -->
+    <div class="col">
+      <div class="row" >
+        <ng-container *ngFor="let product of filteredProducts; let i = index">
+         
+          <div class="col-lg-2" style="padding-right: 10px;padding-left: 10px;margin-top: 40px;" *ngIf="product?.photos != null &&product?.photos[0] != null" >
+            <div >
+              
+              <div *ngIf="product.title" class="card-body">
+                
+                <div class="row">
+                  <div class="col-md-9"><span style="color: #19497A;font-weight: bold;font-family: sans-serif;">{{product?.user?.name.toUpperCase()}}</span></div>
+                  <div class="col-md-3">
+                      <select (change)="itemAction($event, product)" id="menuActions" style="width: 20px;height: 20px">
+                          <option value="none"></option>
+                          <option value="edit"> <a style="color: #fff" class="actionBtn" class="actionBtn">Edit Post</a></option> 
+                          <option value="report">Report User</option>
+                        </select>
+                  </div>
+                </div>
+                <img  class="img-responsive card-img" (click)="postDetails(product.id)" [src]="apiService.getPhotoUrl(product.photos[0].url)">
+                <div class="card-body" style="text-align: center;">
+                  <p class="card-text" style="color: orange;font-weight: bold;">{{ product.minPrice | currency:'USD':true }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="(i+1) % 6 === 0" class="w-100"></div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content" style="padding-top: 10px;">
+        <span (click)="closeModal()" class="close pull-right" style="position: absolute;right: 10px;">&times;</span>
+        <h2 style="text-align: center;">report User</h2>
+        <textarea class="form-control" cols="10" rows="6" placeholder="Enter your report here" #reportMsg></textarea>
+        <button class="btn btn-primary pull-right" style="width: 100px;margin-top: 10px;margin-left: 500px;"
+        (click)="reportUser(reportMsg.value)">Submit</button>
+    </div>
+  
+  </div>
+
+<div id="myModal2" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content" style="padding-top: 10px;">
+      <span (click)="closeModal2()" class="close pull-right" style="position: absolute;right: 10px;">&times;</span>
+      <h2 style="text-align: center;">User reported successfully!</h2>
+      <div class="row justify-content-center">
+          <button class="btn btn-primary" style="width: 100px;"
+          (click)="closeModal2()">OK</button>
+      </div>
+  </div>
+</div>
+</div>

@@ -1,47 +1,57 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { AngularFireModule } from 'angularfire2';
-import { SharedModule } from 'shared/shared.module';
-import { HttpModule } from '@angular/http';
+import { NgModule } from '@angular/core';
 
-import { environment } from '../environments/environment';
-import { AdminModule } from './admin/admin.module';
-import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './core/components/login/login.component';
-import { CoreModule } from './core/core.module';
-import { ProductsComponent } from './shopping/components/products/products.component';
-import { ShoppingModule } from './shopping/shopping.module';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { TestComponent } from './test/test.component';
-import { GoogleChartsModule } from 'angular-google-charts';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegitserComponent } from './regitser/regitser.component';
+import { HeaderComponent } from './header/header.component';
+import { ProductComponent } from './product/product.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminReportsComponent } from './admin-reports/admin-reports.component';
+import { AdminBlockedUsersComponent } from './admin-blocked-users/admin-blocked-users.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProfileComponent } from './profile/profile.component';
+import { StatisticsComponent } from './statistics/statistics.component'; 
+import { GoogleChartsModule } from 'angular-google-charts';
+import { ReportsComponent } from './reports/reports.component';
+import { BlockedComponent } from './blocked/blocked.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
     HomeComponent,
+    LoginComponent,
+    RegitserComponent,
+    HeaderComponent,
+    ProductComponent,
+    AddProductComponent,
+    AdminDashboardComponent,
+    AdminReportsComponent,
+    AdminBlockedUsersComponent,
+    ProductDetailsComponent,
+    ProfileComponent,
+    StatisticsComponent,
+    ReportsComponent,
+    BlockedComponent
   ],
   imports: [
-    BrowserModule,
+    GoogleChartsModule.forRoot(),
     AngularFontAwesomeModule,
-    HttpModule,
-    SharedModule,
-    AdminModule,
-    ShoppingModule,
-    CoreModule,
-    GoogleChartsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    RouterModule.forRoot([
-      { path: '', component: ProductsComponent },
-      { path: 'login', component: LoginComponent },
-    ])
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+    
   ],
-  providers: [
-    AdminAuthGuard,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

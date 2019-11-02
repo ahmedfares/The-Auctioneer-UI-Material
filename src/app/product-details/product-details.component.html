@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<div class="row" style="margin:100px ;">
+  <div class="col-md-6">
+      <img *ngIf="product?.photos != null &&product?.photos[0] != null" width="300px" height="400px" class="img-responsive card-img" [src]="service.getPhotoUrl(product.photos[0].url)" >
+  </div> 
+  <div class="col-md-6">
+    <div class="row">
+        <div class="col-md-5 label">title:</div>
+        <div class="col-md-7"><span >{{product?.title}}</span></div>
+       </div> 
+       <div class="row">
+          <div class="col-md-5 label">Description:</div>
+          <div class="col-md-7"><span >{{product?.description}}</span></div>
+         </div> 
+         <div class="row">
+            <div class="col-md-5 label">Price:</div>
+            <div class="col-md-7"><span >${{product?.minPrice}}</span></div>
+           </div> 
+           <div class="row">
+              <div class="col-md-5 label">Owner:</div>
+              <div class="col-md-7"><span >{{product?.user?.name}}</span></div>
+             </div> 
+             <div class="row">
+                <div class="col-md-5 label">Phone:</div>
+                <div class="col-md-7"><span>{{product?.user.phone}}</span></div>
+               </div> 
+               <div class="row">
+                <div class="col-md-5 label">Last bidder:</div>
+                <div class="col-md-7"><span>{{lastBidderName}}</span></div>
+               </div> 
+              <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                <button class="btn btn-primary" style="width: 150px;" (click)="bid(product)" >Bid: ${{biddingValue}}</button>
+                </div>
+              </div>
+    </div>
+  </div>

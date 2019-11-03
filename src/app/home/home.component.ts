@@ -61,25 +61,24 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/productDetails'],{queryParams:{id:productId}});
   }
  
-  
-  itemAction(obj, product){
+  reportUserModal(obj, product){
     this.currentProduct = product;
-    if(obj.target.selectedIndex == 1)
-        this.router.navigate(['/addProduct'],{queryParams: {id: product.id}});
-    else if(obj.target.selectedIndex == 2)
-        {
-            let modal = document.getElementById("myModal");
+    let modal = document.getElementById("myModal");
             modal.style.display = "block";
             window.onclick = function(event) {
               if (event.target == modal) {
                 modal.style.display = "none";
               }
             }
-        }
   }
+  editPost(obj, product){
+    this.currentProduct = product;
+    this.router.navigate(['/addProduct'],{queryParams: {id: product.id}});
+  }
+
   goToDetails(product){
     sessionStorage.setItem('selectedProduct',JSON.stringify(product));
-    this.router.navigate(['/productDetails']);
+    this.router.navigate(['/productDetails'],{queryParams: {id: product.id}});
   }
 
   reportUser(reportMsg){

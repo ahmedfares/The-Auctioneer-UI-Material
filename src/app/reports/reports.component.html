@@ -4,7 +4,7 @@
             {{report.name}}
     </a> 
   </div>
-  <div *ngIf="selectedReport != null" style="margin: 100px;margin-left: 300px;">
+  <div *ngIf="selectedReport != null" style="margin: 50px;margin-left: 300px;">
       <h3>{{selectedReport.name}} Reports Description</h3>
       <ol>
         <li class="row" *ngFor="let details of selectedReport.hasReports; let i = index">

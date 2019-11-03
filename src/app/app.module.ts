@@ -1,3 +1,4 @@
+import { MaterialsModule } from './materials/materials.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -22,6 +23,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { ReportsComponent } from './reports/reports.component';
 import { BlockedComponent } from './blocked/blocked.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { BlockedComponent } from './blocked/blocked.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialsModule
     
   ],
   providers: [],

@@ -1,4 +1,4 @@
-<ul>
+<!-- <ul>
     <li><a id="homeScreen" [ngClass]="{ 'active': activePage == 'home' }" routerLink="/">Home</a></li>
     <li *ngIf="appUser"><a [ngClass]="{ 'active': activePage == 'profile' }"  routerLink="/profile">Profile</a></li>
     <li *ngIf="appUser"><a [ngClass]="{ 'active': activePage == 'addProduct' }"  routerLink="/addProduct">Sell Your Staff</a></li>
@@ -7,8 +7,12 @@
     <li *ngIf="appUser && appUser.type == 'admin'"><a [ngClass]="{ 'active': activePage == 'reports' }"  id="reportsScreen" routerLink="/reports" >Reports</a></li>
     <li *ngIf="appUser && appUser.type == 'admin'"><a [ngClass]="{ 'active': activePage == 'blocked' }"  id="blockedScreen" routerLink="/blocked" >Blocked Users</a></li>
     <li class="credential" *ngIf="appUser"><a href="#"  (click)="logout()"> Logout </a></li>
+    <li class="credential" > <a href="#"  (click)="logout()"> 
+        <mat-icon>grade</mat-icon>
+  
+    </a> </li>
     <li class="credential" *ngIf="appUser"><a href="#" >{{ appUser.name }}</a></li>
-
+            
     <li *ngIf="appUser" class="nav-item dropdown credential">
       <a href="#" class="notification" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         <span class="fa fa-bell fa-2x"></span>
@@ -18,17 +22,21 @@
         <a class="notify">You Got An Item: <span style="font-weight: bold;">{{not.post.title}}</span><br>
           <span style="font-weight: bold;"> price{{not.price}}</span></a>
       </div>
-      <!-- <div class="dropdown-content">
-          <a href="#" class="notify">You Got An Item: <span style="font-weight: bold;">Car </span> <br> 
-            price <span style="font-weight: bold;">$4.50</span></a>
-            <a href="#" class="notify">You Got An Item: <span style="font-weight: bold;">Car </span> <br> 
-              price <span style="font-weight: bold;">$4.50</span></a>
-        </div> -->
-    
     </li>
-    
-    
-  </ul>
+  </ul> -->
+  <mat-toolbar color="primary" class="navbar">
+    <div>Auctioneer <span *ngIf="appUser"> | {{ appUser.name }}</span><span *ngIf="!appUser"> | Guest</span></div>
+    <div>
+      <span><a id="homeScreen" [ngClass]="{ 'active': activePage == 'home' }" routerLink="/">Home</a></span>
+      <span *ngIf="appUser"><a [ngClass]="{ 'active': activePage == 'profile' }"  routerLink="/profile">Profile</a></span>
+      <span *ngIf="appUser"><a [ngClass]="{ 'active': activePage == 'addProduct' }"  routerLink="/addProduct">Sell Your Staff</a></span>
+      <span *ngIf="!appUser"><a href="#" (click)="showLogin()">Login</a></span>
+      <span *ngIf="appUser && appUser.type == 'admin'"><a [ngClass]="{ 'active': activePage == 'statistics' }"  routerLink="/statistics" >Statistics</a></span>
+      <span *ngIf="appUser && appUser.type == 'admin'"><a [ngClass]="{ 'active': activePage == 'reports' }"  id="reportsScreen" routerLink="/reports" >Reports</a></span>
+      <span *ngIf="appUser && appUser.type == 'admin'"><a [ngClass]="{ 'active': activePage == 'blocked' }"  id="blockedScreen" routerLink="/blocked" >Blocked Users</a></span>
+      <span *ngIf="appUser"><a href="#"  (click)="logout()"> Logout </a></span>
+    </div>
+  </mat-toolbar>
 
    <div class="collapse navbar-collapse" id="navbarSupportedContent-5">
        

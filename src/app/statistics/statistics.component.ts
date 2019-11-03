@@ -20,7 +20,7 @@ export class StatisticsComponent implements OnInit {
    data : this.statistics.postsPerCategory,
    columnNames : ['Category', 'Percentage'],
    options : {},
-   width : 600,
+   width : 500,
    height : 300
   }
   

@@ -1,5 +1,12 @@
 
 //////////////////
+mat-toolbar {
+  justify-content: space-between;
+  z-index: 1000;
+}
+span {
+  padding-right: 1rem;
+}
 ul {
   list-style-type: none;
   margin: 0;
@@ -28,18 +35,17 @@ li a {
 }
 
 li a:hover:not(.active) {
-  background-color: #111;
   height: 60px;
 }
 
 li a.notify:hover {
   background-color: #fff;
-  color: #19497A;
   height: 85px;
 }
-.active {
-  background-color: #19497A;
+a{
+  color: #fff;
   height: 60px;
+  font-size: 18px;
 }
 //////////////////
 .dropdown-toggle{

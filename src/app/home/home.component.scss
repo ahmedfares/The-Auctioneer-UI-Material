@@ -68,3 +68,22 @@ a:hover {
     text-decoration: none;
     cursor: pointer;
   }
+  .container{
+    background-color: #FAFAFA;
+    margin:0px;
+    margin-right: 0px;
+    max-width: none;
+    width: 100%;
+  }
+  .example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('../../assets/images/anonymous.png');
+    background-size: cover;
+  }
+  .mat-card-image {
+    max-height: 170px;
+  }
+  
